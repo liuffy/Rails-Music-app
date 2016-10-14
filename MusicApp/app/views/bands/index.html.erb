@@ -1,1 +1,16 @@
 <!-- This acts as the main page/ complete list of all of the bands  -->
+<html>
+
+  <style>
+     li{ list-style-type: none;
+       }
+   </style>
+<center><h2 style="color:teal;">All Bands</h1></center>
+  <center><ul><% @bands.each do |band| %>
+    <li><%= link_to "#{band.name}", band_url(band) %></li>
+    <% end %></center>
+  </ul>
+
+<br>
+<center><%= link_to "🎶 Add New Band to Database", new_band_url %></center>
+</html>

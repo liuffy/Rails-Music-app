@@ -25,7 +25,7 @@ class AlbumsController < ApplicationController
 
   def new
     @band = Band.find(params[:id])
-    @album = Album.newW(band_id: params[:band_id])
+    @album = Album.newW(band_id: params[:band_id]) #need to reference the band
     render :new
   end
 

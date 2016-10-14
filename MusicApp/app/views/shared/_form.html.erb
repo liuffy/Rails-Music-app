@@ -1,0 +1,19 @@
+<html>
+
+<center><form class="" action="<%= action %>" method="post">
+  <!-- Action specified on the view page -->
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+<!-- USERNAME  -->
+  <label for="user_email">Email:</label>
+    <input type="text" id="user_email" name="user[email]">
+    <br>
+<!-- PASSWORD -->
+  <label for="user_password">Password:</label>
+    <input type="password" id="user_password" name="user[password]">
+    <br>
+    <input type="submit">
+    <br>
+    <br>
+    <input type="reset" value="Reset">
+</form></center>
+</html>

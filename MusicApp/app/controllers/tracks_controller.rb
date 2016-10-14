@@ -24,7 +24,8 @@ class TracksController < ApplicationController
   end
 
   def new
-    @track = Track.new
+    @album = Album.find(params[:id])
+    @track = Track.new(album_id: params: [:album_id]) # need to reference the album
     render :new
   end
 
@@ -45,6 +46,6 @@ class TracksController < ApplicationController
 
   private
   def track_params
-    params.require(:track).permit(:title, :album_id, :track_type)
+    params.require(:track).permit(:title, :album_id, :lyrics, :track_type)
   end
 end

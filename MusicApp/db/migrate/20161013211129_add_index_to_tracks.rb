@@ -1,5 +1,5 @@
 class AddIndexToTracks < ActiveRecord::Migration
   def change
-    add_column :tracks, :track_type, :string, default: 'standard'
+    add_column :tracks, :lyrics, :string, null: false
   end
 end

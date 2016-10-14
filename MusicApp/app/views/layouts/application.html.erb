@@ -1,12 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
+  
   <title>MusicApp</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+    <style type="text/css">
+      body{
+      font-family:"Lucida Console", Monaco, monospace;}
+      h1, h2, h3, h4{
+      font-family:"Lucida Console", Monaco, monospace;}
+    </style>
 </head>
 <body>
+
+<nav>
+  <center><h1><font color="teal">MusicApp - The Best Social Music Database</font></h1></center>
+  Current time: <span id="miniclock"><noscript>Enable JS to see clock</noscript></span>
+<script language="JavaScript" type="text/javascript">
+<!-- JavaScript Clock Provided by Free SEO Tools from Pingler - http://pingler.com/seo-tools/ -->
+<!--
+function runMiniClock()
+{
+    var time = new Date();
+    var hours = time.getHours();
+    var minutes = time.getMinutes();
+    minutes=((minutes < 10) ? "0" : "") + minutes;
+    ampm = (hours >= 12) ? "PM" : "AM";
+    hours=(hours > 12) ? hours-12 : hours;
+    hours=(hours == 0) ? 12 : hours;
+    var clock = hours + ":" + minutes + " " + ampm;
+    if(clock != document.getElementById('miniclock').innerHTML) document.getElementById('miniclock').innerHTML = clock;
+    timer = setTimeout("runMiniClock()",1000);
+}
+runMiniClock();
+//-->
+</script>
+<br>
+    <% if current_user.nil? %>
+    <%= button_to "Log in", new_session_url, method: :get %>
+    <%= button_to "New? Sign up", new_user_url, method: :get %>
+    <!--  new_session GET  ->  /session/new -->
+   <% else %>
+     You are currently logged in, <%= current_user.email %>
+     <br>
+     <img src="http://24.media.tumblr.com/tumblr_mairma2QHm1rfjowdo1_500.gif" width="80" height="auto">
+     <%= button_to "Log out", session_url, method: :delete %>
+     <!--  session_url -> DELETE /session/:id  -->
+   <% end %>
+</nav>
 
 <%= yield %>
 
