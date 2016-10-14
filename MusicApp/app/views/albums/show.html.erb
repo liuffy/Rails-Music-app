@@ -1,2 +1,40 @@
 <!-- This shows the info for an individual album based on ID
  /albums/:id -->
+<html>
+<center>
+  <style>
+       table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+}
+   </style>
+
+ <h2 style="color:teal">Album Info: <%= @album.name %></h2>
+ <table cellpadding="15">
+   <tr>
+     <th>Band</th>
+     <th>Album type</th>
+     <th>Year of Release</th>
+   </tr>
+   <br>
+  <tr><td align="middle"><%= @album.band.name %></td>
+  <td align="middle"><%= @album.album_type %></td>
+  <td align="middle"><%= @album.year %></td></tr>
+  </table>
+ <br>
+ <h3>Tracks in this album</h3>
+   <ul><% @album.tracks.each do |track| %>
+     <li><%= link_to "#{track.title}", track_url(track) %></li>
+     <% end %>
+ </ul>
+ <h3 style="color:red">Links</h3>
+
+ <%= button_to "Edit Album", edit_album_url(@album), method: :get %>
+ <%= button_to "Delete Album", album_url(@album), method: :delete %>
+ <%= button_to "Add track to album", new_album_track_url(@album), method: :get %>
+ <br>
+<%= link_to @album.band.name, band_url(@album.band)%></center>
+
+<br>
+<%= link_to "Back to All Bands", bands_url%>
+</html>

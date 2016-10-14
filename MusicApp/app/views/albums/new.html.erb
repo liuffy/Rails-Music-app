@@ -1,1 +1,8 @@
 <!-- References form -->
+<!-- References _form  -->
+<html><body>
+<center><h2 style="color:teal"> Add New Album</h2></center>
+<%= render "shared/errors" %>
+<%= render 'albums/form', album: @album %>
+<br>
+ <%= link_to @album.band.name, band_url(@album.band)%>

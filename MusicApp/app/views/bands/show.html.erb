@@ -1,2 +1,17 @@
 <!-- This shows the albums and links for an individual band based on ID
  /bands/:id -->
+
+
+<center><h2 style="color:teal">Band profile: <%= @band.name %></h2></center>
+<center><h3>Albums</h3></center>
+  <center><ul><% @band.albums.each do |album| %>
+    <li><%= link_to "#{album.name}", album_url(album) %></li>
+    <% end %>
+</ul></center>
+ <center><h3 style="color:red">Links</h3></center>
+
+<center><%= button_to "Edit Band", edit_band_url(@band), method: :get %></center>
+<center><%= button_to "Delete Band", band_url(@band), method: :delete %></center>
+<center><%= button_to "New album", new_band_album_url(@band), method: :get %></center>
+<br>
+<%= link_to "Back to All Bands", bands_url%></center>

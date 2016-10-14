@@ -1,0 +1,23 @@
+<!-- Partial for comments form  -->
+
+<!--
+
+
+Add destroy buttons for notes to the notes/_note partial.
+Only show the button if the current_user authored the note!!!!!!
+In the controller, ensure that a user is not allowed to destroy a note!!!!
+unless they authored it.
+Issue a 403 FORBIDDEN status if the user tries to destroy a note but
+they are not allowed to. Use render text: to give a bare-bones error
+message here. Don't worry about making this nice because someone would have to reverse-engineer your API in order to see it. -->
+
+
+<form action="<%= comments_url %>" method="post"</center>
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="comment[track_id]" value="<%= track.id %>">
+    <h3 style="color:purple">Add New Comment</h3>
+    <textarea name="comment[comment_text]" cols="50" rows="10"></textarea>
+    <input type="submit">
+
+
+  </form>

@@ -1,2 +1,47 @@
 <!-- This shows the lyrics links for a specific track based on ID
  /tracks/:id -->
+
+ <html>
+
+   <style>
+        table, th, td {
+         border: 1px solid black;
+         border-collapse: collapse;
+ }
+    </style>
+
+<center>
+  <h2 style="color:teal">Song Info: <%= @track.title %></h2>
+  <table cellpadding="15">
+    <tr>
+      <th>Album name</th>
+      <th>Track Type</th>
+    </tr>
+    <br>
+     <tr><td align="middle"><%= @track.album.name %></td>
+     <td align="middle"><%= @track.track_type %></td>
+   </table>
+  <br>
+  <h3>Lyrics</h3>
+<%= ugly_lyrics(@track.lyrics) %></center>
+
+<%= render 'comments/form', track: @track %>
+
+<% @track.comments.each do |comment| %>
+  <p><%= comment.comment_text %></p>
+  <p>- Posted by: <%= comment.user.email %></p>
+  <% if current_user.id == comment.user_id %>
+    <%= button_to "Delete Comment", comment_url(comment), method: :delete %>
+  <% end %>
+  <p>-------------------------------------</p>
+  <% end %>
+
+<center><h3 style="color:red">Links</h3>
+
+ <%= button_to "Edit Track", edit_track_url(@track), method: :get %>
+  <%= button_to "Delete Track", track_url(@track), method: :delete %>
+  <br>
+<%= link_to @track.album.name, album_url(@track.album)%></center>
+  <br>
+  <%= link_to "Back to All Bands", bands_url%>
+ </html>

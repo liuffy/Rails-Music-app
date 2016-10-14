@@ -1,1 +1,13 @@
 <!-- References _form -->
+<!-- References _form -->
+<!-- References _form  -->
+<html>
+
+<center><h2 style="color:teal">Add New Track</h3>
+<%= render "shared/errors" %>
+<%= render 'tracks/form', track: @track %>
+<br>
+ <%= link_to @track.album.name, band_url(@track.album)%>
+
+</html>
+<!-- References _form  -->

@@ -1,1 +1,11 @@
 <!-- References _form  -->
+<html>
+
+<center><h2 style="color:teal">Edit Album</h3>
+<%= render "shared/errors" %>
+<%= render 'albums/form', album: @album %>
+<br>
+ <%= link_to @album.band.name, band_url(@album.band)%>
+
+</html>
+<!-- References _form  -->

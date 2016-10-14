@@ -24,8 +24,8 @@ class TracksController < ApplicationController
   end
 
   def new
-    @album = Album.find(params[:id])
-    @track = Track.new(album_id: params: [:album_id]) # need to reference the album
+    @album = Album.find(params[:album_id])
+    @track = Track.new(album_id: params[:album_id]) # need to reference the album
     render :new
   end
 
